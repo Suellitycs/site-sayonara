@@ -6,6 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Sayonara Maria | Consultoria Estratégica em RH</title>
+<!-- PREVIEW DO SITE QUANDO COMPARTILHAR -->
+
+<meta property="og:title" content="Sayonara Maria | Consultoria Estratégica em RH">
+<meta property="og:description" content="Executiva de Recursos Humanos com mais de 18 anos de experiência em liderança, cultura organizacional e gestão estratégica de pessoas.">
+<meta property="og:image" content="https://site-sayonara.netlify.app/logo.jpg">
+<meta property="og:url" content="https://site-sayonara.netlify.app">
+<meta property="og:type" content="website">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -104,9 +111,38 @@ background:#0a0f1c;
 box-shadow:0 8px 30px rgba(0,0,0,.5);
 }
 
+.logo-container{
+position:relative;
+display:inline-block;
+overflow:hidden;
+}
+
 .logo{
 height:48px;
-position:relative;
+display:block;
+}
+
+.logo-container::after{
+content:"";
+position:absolute;
+top:0;
+left:-120px;
+width:120px;
+height:100%;
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.7),
+transparent
+);
+transform:skewX(-20deg);
+animation:logoLight 5s infinite;
+}
+
+@keyframes logoLight{
+0%{left:-120px;}
+60%{left:150%;}
+100%{left:150%;}
 }
 
 .logo::after{
@@ -381,7 +417,9 @@ box-shadow:0 8px 20px rgba(0,0,0,.5);
 
 <header>
 
+<div class="logo-container">
 <img src="logo.jpg" class="logo">
+</div>
 
 <nav>
 <a href="#impacto">Impacto</a>
