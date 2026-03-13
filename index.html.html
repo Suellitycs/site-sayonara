@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sayonara Maria | Consultoria Estratégica em RH</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:Inter;
+background:linear-gradient(135deg,#0a0f1c,#11182b);
+color:#e6eaf3;
+overflow-x:hidden;
+}
+
+/* PARTICULAS */
+
+#particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+overflow:hidden;
+}
+
+.particle{
+position:absolute;
+width:3px;
+height:3px;
+background:#6f8cff;
+border-radius:50%;
+opacity:.6;
+animation:float 12s linear infinite;
+}
+
+@keyframes float{
+from{transform:translateY(100vh);opacity:0;}
+30%{opacity:.8;}
+to{transform:translateY(-10vh);opacity:0;}
+}
+
+/* VINHETA */
+
+#vinheta{
+position:fixed;
+width:100%;
+height:100%;
+background:#0b0f1a;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:9999;
+animation:fadeOut 2s forwards;
+animation-delay:3s;
+}
+
+#vinheta img{
+width:420px;
+animation:glow 2s infinite alternate;
+}
+
+#vinheta p{
+margin-top:20px;
+font-size:20px;
+color:#aab3c7;
+}
+
+@keyframes glow{
+from{filter:drop-shadow(0 0 15px #5b7cff)}
+to{filter:drop-shadow(0 0 60px #9bb2ff)}
+}
+
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
+}
+
+/* HEADER */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 60px;
+background:rgba(15,22,39,.85);
+backdrop-filter:blur(8px);
+border-bottom:1px solid rgba(255,255,255,0.05);
+position:sticky;
+top:0;
+z-index:10;
+}
+
+.scrolled{
+background:#0a0f1c;
+box-shadow:0 8px 30px rgba(0,0,0,.5);
+}
+
+.logo{
+height:48px;
+position:relative;
+}
+
+.logo::after{
+content:"";
+position:absolute;
+top:0;
+left:-60px;
+width:60px;
+height:100%;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);
+animation:shine 5s infinite;
+}
+
+@keyframes shine{
+0%{left:-60px}
+100%{left:120%}
+}
+
+nav a{
+margin-left:20px;
+text-decoration:none;
+color:#cbd5e1;
+font-weight:500;
+font-size:14px;
+}
+
+nav a:hover{
+color:#8fa8ff;
+}
+
+/* HERO */
+
+.hero{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:40px;
+padding:60px 20px;
+flex-wrap:wrap;
+position:relative;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,#4c6bff33,transparent 70%);
+top:-120px;
+left:50%;
+transform:translateX(-50%);
+filter:blur(40px);
+z-index:-1;
+}
+
+.hero img{
+width:220px;
+border-radius:50%;
+box-shadow:0 0 45px rgba(90,120,255,0.45);
+}
+
+.hero h1{
+font-family:Playfair Display;
+font-size:42px;
+}
+
+.tagline{
+color:#8fa8ff;
+font-weight:600;
+margin-top:6px;
+}
+
+.hero p{
+margin-top:8px;
+max-width:520px;
+color:#b7c0d6;
+line-height:1.5;
+}
+
+/* BOTÕES */
+
+.buttons{margin-top:18px}
+
+.btn{
+padding:10px 22px;
+border-radius:28px;
+text-decoration:none;
+margin-right:8px;
+font-weight:600;
+font-size:14px;
+}
+
+.btn1{
+background:linear-gradient(120deg,#5b7cff,#3b53d6);
+color:white;
+box-shadow:0 6px 18px rgba(60,80,200,.4);
+}
+
+.btn2{
+border:1px solid #5b7cff;
+color:#9bb2ff;
+}
+
+/* KPI */
+
+.kpi{
+display:flex;
+justify-content:center;
+gap:15px;
+padding:20px;
+background:#0f1627;
+flex-wrap:wrap;
+}
+
+.kpi div{
+background:#141c33;
+padding:16px 26px;
+border-radius:10px;
+text-align:center;
+min-width:160px;
+box-shadow:0 6px 18px rgba(0,0,0,.35);
+}
+
+.kpi h3{
+font-size:30px;
+color:#8fa8ff;
+}
+
+.kpi p{
+font-size:13px;
+color:#aab3c7;
+margin-top:3px;
+}
+
+/* GALERIA */
+
+.gallery-section{
+padding:55px 20px;
+}
+
+.gallery-section h2{
+text-align:center;
+font-family:Playfair Display;
+margin-bottom:12px;
+}
+
+.gallery-desc{
+text-align:center;
+max-width:700px;
+margin:auto;
+margin-bottom:28px;
+color:#aab3c7;
+}
+
+.slider{
+display:flex;
+overflow-x:auto;
+gap:12px;
+padding-bottom:10px;
+}
+
+.slider img{
+height:190px;
+border-radius:10px;
+transition:.35s;
+box-shadow:0 8px 20px rgba(0,0,0,.45);
+}
+
+.slider img:hover{
+transform:scale(1.08);
+}
+
+/* TIMELINE */
+
+.timeline{
+max-width:850px;
+margin:auto;
+padding:55px 20px;
+}
+
+.timeline h2{
+text-align:center;
+margin-bottom:30px;
+font-family:Playfair Display;
+}
+
+.timeline-item{
+opacity:0;
+transform:translateY(35px);
+transition:.7s;
+margin-bottom:22px;
+border-left:3px solid #5b7cff;
+padding-left:14px;
+}
+
+.timeline-item.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+.timeline-item h3{
+font-size:17px;
+}
+
+.timeline-item p{
+font-size:14px;
+color:#aab3c7;
+}
+
+/* FORMAÇÃO */
+
+.education{
+max-width:700px;
+margin:auto;
+padding:40px 20px;
+}
+
+.education h2{
+font-family:Playfair Display;
+margin-bottom:15px;
+}
+
+.education li{
+margin-bottom:8px;
+color:#c5ccdf;
+}
+
+/* FRASE */
+
+.quote{
+background:linear-gradient(120deg,#3b53d6,#2b3da8);
+padding:60px 20px;
+text-align:center;
+font-size:22px;
+font-weight:500;
+}
+
+/* CONTATO */
+
+.contact{
+text-align:center;
+padding:35px;
+background:#0f1627;
+color:#cbd5e1;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25d366;
+padding:14px 18px;
+border-radius:30px;
+color:white;
+text-decoration:none;
+font-weight:600;
+box-shadow:0 8px 20px rgba(0,0,0,.5);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<div id="vinheta">
+<img src="logo.jpg">
+<p>Consultoria estratégica em RH</p>
+</div>
+
+<header>
+
+<img src="logo.jpg" class="logo">
+
+<nav>
+<a href="#impacto">Impacto</a>
+<a href="#carreira">Carreira</a>
+<a href="#formacao">Formação</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<img src="foto.jpg">
+
+<div>
+
+<h1>Sayonara Maria</h1>
+
+<p class="tagline">
+Consultoria estratégica em RH que transforma talentos em resultados com impacto.
+</p>
+
+<p>
+Executiva de Recursos Humanos com mais de 18 anos de experiência na construção de culturas organizacionais fortes, desenvolvimento de lideranças e fortalecimento da gestão estratégica de pessoas.
+</p>
+
+<div class="buttons">
+
+<a class="btn btn1" href="https://wa.me/5521964545152">
+Agendar consultoria
+</a>
+
+<a class="btn btn2" href="https://www.linkedin.com/in/sayonara-maria/">
+LinkedIn
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="kpi">
+
+<div>
+<h3>18+</h3>
+<p>Anos em RH estratégico</p>
+</div>
+
+<div>
+<h3>100+</h3>
+<p>Projetos e treinamentos</p>
+</div>
+
+<div>
+<h3>ESG</h3>
+<p>Gestão estratégica</p>
+</div>
+
+<div>
+<h3>Psicologia</h3>
+<p>Organizacional</p>
+</div>
+
+</section>
+
+<section id="impacto" class="gallery-section">
+
+<h2>Momentos que constroem impacto</h2>
+
+<p class="gallery-desc">
+Eventos, palestras, encontros com mulheres e iniciativas de desenvolvimento humano que refletem a essência do trabalho realizado: fortalecer pessoas e transformar organizações.
+</p>
+
+<div class="slider">
+
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+<img src="foto4.jpg">
+<img src="foto5.jpg">
+<img src="foto6.jpg">
+<img src="foto7.jpg">
+<img src="foto8.jpg">
+<img src="foto9.jpg">
+<img src="foto10.jpg">
+
+</div>
+
+</section>
+
+<section id="carreira" class="timeline">
+
+<h2>Experiência Profissional</h2>
+
+<div class="timeline-item">
+<h3>Gerente Regional de RH</h3>
+<p>Madeireira Flaviense do Brasil</p>
+</div>
+
+<div class="timeline-item">
+<h3>Coordenadora de RH</h3>
+<p>Marlog Logística</p>
+</div>
+
+<div class="timeline-item">
+<h3>Gerente de RH</h3>
+<p>Wap Air</p>
+</div>
+
+<div class="timeline-item">
+<h3>Supervisora de RH</h3>
+<p>Confiare Assessoria Contábil</p>
+</div>
+
+<div class="timeline-item">
+<h3>Analista de RH Sênior</h3>
+<p>Grupo Benassi</p>
+</div>
+
+</section>
+
+<section id="formacao" class="education">
+
+<h2>Formação Acadêmica</h2>
+
+<ul>
+<li>Graduação em Gestão de Recursos Humanos – Estácio de Sá</li>
+<li>Bacharelado em Administração – Estácio de Sá</li>
+<li>MBA em Gestão Estratégica em ESG e Psicologia Organizacional</li>
+</ul>
+
+</section>
+
+<section class="quote">
+
+“Organizações fortes são construídas quando talentos são desenvolvidos com estratégia, propósito e visão de futuro.”
+
+</section>
+
+<section class="contact">
+
+<p>📞 +55 21 96454-5152</p>
+<p>✉ sayonara.candidata@gmail.com</p>
+
+</section>
+
+<a class="whatsapp" href="https://wa.me/5521964545152">
+WhatsApp
+</a>
+
+<script>
+
+/* PARTICULAS */
+
+const container=document.getElementById("particles")
+
+for(let i=0;i<35;i++){
+
+let p=document.createElement("div")
+p.classList.add("particle")
+
+p.style.left=Math.random()*100+"%"
+p.style.animationDuration=(8+Math.random()*10)+"s"
+p.style.opacity=Math.random()
+
+container.appendChild(p)
+
+}
+
+/* MENU DINÂMICO */
+
+window.addEventListener("scroll",()=>{
+
+let header=document.querySelector("header")
+
+if(window.scrollY>80){
+header.classList.add("scrolled")
+}else{
+header.classList.remove("scrolled")
+}
+
+})
+
+/* TIMELINE */
+
+let items=document.querySelectorAll(".timeline-item")
+
+function showTimeline(){
+
+items.forEach(item=>{
+
+let top=item.getBoundingClientRect().top
+
+if(top<window.innerHeight-100){
+item.classList.add("visible")
+}
+
+})
+
+}
+
+window.addEventListener("scroll",showTimeline)
+
+</script>
+
+</body>
+</html>
